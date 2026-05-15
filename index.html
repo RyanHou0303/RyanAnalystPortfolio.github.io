@@ -16,9 +16,15 @@
     }
 
     h1 { margin-bottom: 6px; }
-    h2 { margin-bottom: 16px; }
+    h2 { margin-bottom: 8px; }
 
     .muted { color: #666; font-size: 14px; }
+
+    .section-intro {
+      color: #555;
+      font-size: 14px;
+      margin: 0 0 18px;
+    }
 
     .card {
       background: white;
@@ -48,6 +54,27 @@
       margin-bottom: 6px;
     }
 
+    .project-meta {
+      color: #777;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .project-points {
+      color: #444;
+      font-size: 14px;
+      margin: 8px 0 10px 18px;
+      padding: 0;
+    }
+
+    .project-points li {
+      margin-bottom: 4px;
+    }
+
+    .tag-row {
+      margin: 8px 0;
+    }
+
     .tag {
       display: inline-block;
       font-size: 12px;
@@ -55,18 +82,34 @@
       border: 1px solid #eee;
       padding: 2px 8px;
       border-radius: 999px;
-      margin-left: 8px;
+      margin: 0 6px 6px 0;
+    }
+
+    .status {
+      color: #777;
+      cursor: default;
+      font-size: 14px;
+      margin-right: 14px;
     }
 
     .links a {
+      display: inline-block;
       font-size: 14px;
-      margin-right: 14px;
+      font-weight: 600;
+      margin: 8px 10px 0 0;
+      padding: 8px 14px;
       text-decoration: none;
-      color: #000;
+      color: #111;
+      border: 1px solid #d8d8d8;
+      border-radius: 8px;
+      background: #f7f7f7;
     }
 
     .links a:hover {
-      text-decoration: underline;
+      background: #111;
+      border-color: #111;
+      color: #fff;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -76,52 +119,125 @@
   <h1>Ryan Hou</h1>
   <p class="muted">Quant Research · MAFN · Rates / Vol / Alt-Data</p>
 
-  <!-- Projects -->
+  <!-- Links -->
   <div class="card">
-    <h2>Projects</h2>
+    <h2>Links</h2>
+    <div class="links">
+      <a href="https://github.com/RyanHou0303">GitHub</a>
+      <a href="https://x.com/RyanHou0303" target="_blank">X</a>
+      <a href="Ryan_Hou_Resume.pdf" target="_blank">Resume (PDF)</a>
+    </div>
+  </div>
+
+  <!-- Featured Projects -->
+  <div class="card">
+    <h2>Featured Projects</h2>
+    <p class="section-intro">
+      Selected research and tooling work across derivatives, rates, systematic signals, and trading workflow automation.
+    </p>
 
     <div class="item">
       <div class="item-title">
         Carry & Roll-down Butterfly (UST Futures)
-        <span class="tag">Rates</span>
       </div>
+      <div class="project-meta">Fixed income research · UST futures · Curve relative value</div>
       <div class="item-desc">
         DV01-neutral curve strategies across 2s–5s–10s and 2s–10s–30s structures.
         Decomposes PnL into carry, rolldown, and spread dynamics with realistic financing assumptions.
       </div>
+      <ul class="project-points">
+        <li>Constructed butterfly trades with duration-neutral weighting and curve-shape diagnostics.</li>
+        <li>Separated carry, roll-down, and spread-move contributions to explain strategy behavior.</li>
+        <li>Framed implementation assumptions around financing, contract selection, and rebalancing.</li>
+      </ul>
+      <div class="tag-row">
+        <span class="tag">Rates</span>
+        <span class="tag">UST Futures</span>
+        <span class="tag">DV01</span>
+        <span class="tag">Relative Value</span>
+      </div>
       <div class="links">
         <a href="3.1 HF ImplementationTemplate [GroupA FI Yield Curve Arb].docx.pdf" target="_blank">Paper</a>
-    
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">
+        Asian Option Pricing
+      </div>
+      <div class="project-meta">Derivatives pricing · Residual correction · Stochastic volatility</div>
+      <div class="item-desc">
+        Python library for pricing arithmetic Asian options by combining Monte Carlo benchmarks,
+        classical analytical approximations, and a machine learning residual-correction layer
+        that learns the systematic bias of fast pricing formulas.
+      </div>
+      <ul class="project-points">
+        <li>Corrected Turnbull-Wakeman approximation bias by learning residuals against a high-precision control-variate Monte Carlo benchmark.</li>
+        <li>Preserved the speed and interpretability of analytical pricing while improving accuracy across moneyness, volatility, maturity, monitoring frequency, and spot levels.</li>
+        <li>Extended testing to Heston and SABR stochastic-volatility settings, Greek accuracy comparisons, and flexible averaging windows [T1, T2].</li>
+      </ul>
+      <div class="tag-row">
+        <span class="tag">Asian Options</span>
+        <span class="tag">Residual ML</span>
+        <span class="tag">Turnbull-Wakeman</span>
+        <span class="tag">Monte Carlo</span>
+        <span class="tag">Heston/SABR</span>
+        <span class="tag">PyPI</span>
+      </div>
+      <div class="links">
+        <a href="https://github.com/RyanHou0303/AsianOption" target="_blank">Repository</a>
       </div>
     </div>
 
     <div class="item">
       <div class="item-title">
         Alt-Data Alpha Engine
-        <span class="tag">Systematic</span>
       </div>
+      <div class="project-meta">Systematic research pipeline · Text features · Cross-sectional modeling</div>
       <div class="item-desc">
         End-to-end pipeline for ingesting unstructured data (e.g., SEC filings, textual signals),
         feature engineering, cross-sectional factor modeling, and risk-adjusted backtesting.
       </div>
+      <ul class="project-points">
+        <li>Designed modular stages for ingestion, cleaning, feature extraction, signal scoring, and evaluation.</li>
+        <li>Emphasized leakage control, universe construction, factor neutralization, and turnover-aware testing.</li>
+        <li>Structured outputs for fast iteration between research notebooks and production-style dashboards.</li>
+      </ul>
+      <div class="tag-row">
+        <span class="tag">Systematic</span>
+        <span class="tag">NLP</span>
+        <span class="tag">Factor Models</span>
+        <span class="tag">Backtesting</span>
+      </div>
       <div class="links">
-        <a href="#">Design</a>
-        <a href="#">Repository</a>
+        <span class="status">Design coming soon</span>
+        <span class="status">Repository coming soon</span>
       </div>
     </div>
 
     <div class="item">
       <div class="item-title">
         IBKR Scanner + Streamlit Dashboard
-        <span class="tag">Tools</span>
       </div>
+      <div class="project-meta">Research tooling · Market data · Interactive dashboard</div>
       <div class="item-desc">
-        Real-time research dashboard integrating IBKR data feeds, spaperignal screening,
+        Real-time research dashboard integrating IBKR data feeds, signal screening,
         and rapid exploratory analytics for discretionary + systematic workflows.
       </div>
+      <ul class="project-points">
+        <li>Built a scanner concept for live market monitoring, candidate ranking, and quick drill-downs.</li>
+        <li>Used Streamlit-style interaction patterns for filters, charts, and research-friendly iteration.</li>
+        <li>Focused on making screening outputs actionable for both discretionary review and systematic testing.</li>
+      </ul>
+      <div class="tag-row">
+        <span class="tag">Tools</span>
+        <span class="tag">IBKR</span>
+        <span class="tag">Streamlit</span>
+        <span class="tag">Dashboard</span>
+      </div>
       <div class="links">
-        <a href="#">Demo</a>
-        <a href="#">Repo</a>
+        <span class="status">Demo coming soon</span>
+        <span class="status">Repo coming soon</span>
       </div>
     </div>
 
@@ -159,15 +275,6 @@
       </div>
     </div>
 
-  </div>
-
-  <!-- Links -->
-  <div class="card">
-    <h2>Links</h2>
-    <div class="links">
-      <a href="https://github.com/RyanHou0303">GitHub</a>
-      <a href="Ryan_Hou_Resume.pdf" target="_blank">Resume (PDF)</a>
-    </div>
   </div>
 
   <p class="muted">
