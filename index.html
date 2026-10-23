@@ -85,12 +85,6 @@
       margin: 0 6px 6px 0;
     }
 
-    .status {
-      color: #777;
-      cursor: default;
-      font-size: 14px;
-      margin-right: 14px;
-    }
 
     .links a {
       display: inline-block;
@@ -133,7 +127,7 @@
   <div class="card">
     <h2>Featured Projects</h2>
     <p class="section-intro">
-      Selected research and tooling work across derivatives, rates, systematic signals, and trading workflow automation.
+      Selected research and tooling work across derivatives, rates, equity data, and portfolio backtesting.
     </p>
 
     <div class="item">
@@ -191,100 +185,85 @@
 
     <div class="item">
       <div class="item-title">
-        Alt-Data Alpha Engine
+        buyside1 — Equity Research &amp; Backtesting
       </div>
-      <div class="project-meta">Systematic research pipeline · Text features · Cross-sectional modeling</div>
+      <div class="project-meta">Research infrastructure · CRSP / WRDS · Portfolio simulation</div>
       <div class="item-desc">
-        End-to-end pipeline for ingesting unstructured data (e.g., SEC filings, textual signals),
-        feature engineering, cross-sectional factor modeling, and risk-adjusted backtesting.
+        Python research toolkit for downloading CRSP equity data through WRDS, building
+        monthly liquidity-screened stock universes, and evaluating portfolio returns
+        after turnover-based transaction costs.
       </div>
       <ul class="project-points">
-        <li>Designed modular stages for ingestion, cleaning, feature extraction, signal scoring, and evaluation.</li>
-        <li>Emphasized leakage control, universe construction, factor neutralization, and turnover-aware testing.</li>
-        <li>Structured outputs for fast iteration between research notebooks and production-style dashboards.</li>
+        <li>Downloads daily common-stock histories in yearly batches and stores research data in Parquet.</li>
+        <li>Selects up to 1,000 stocks for the following month using 60-day average dollar volume, a minimum price filter, and active trading status.</li>
+        <li>Tracks gross and net returns, drift-adjusted turnover, transaction costs, NAV, and drawdowns in a reusable backtest engine.</li>
       </ul>
       <div class="tag-row">
-        <span class="tag">Systematic</span>
-        <span class="tag">NLP</span>
-        <span class="tag">Factor Models</span>
+        <span class="tag">Python</span>
+        <span class="tag">CRSP / WRDS</span>
+        <span class="tag">Universe Construction</span>
+        <span class="tag">Transaction Costs</span>
         <span class="tag">Backtesting</span>
       </div>
       <div class="links">
-        <span class="status">Design coming soon</span>
-        <span class="status">Repository coming soon</span>
-      </div>
-    </div>
-
-    <div class="item">
-      <div class="item-title">
-        IBKR Scanner + Streamlit Dashboard
-      </div>
-      <div class="project-meta">Research tooling · Market data · Interactive dashboard</div>
-      <div class="item-desc">
-        Real-time research dashboard integrating IBKR data feeds, signal screening,
-        and rapid exploratory analytics for discretionary + systematic workflows.
-      </div>
-      <ul class="project-points">
-        <li>Built a scanner concept for live market monitoring, candidate ranking, and quick drill-downs.</li>
-        <li>Used Streamlit-style interaction patterns for filters, charts, and research-friendly iteration.</li>
-        <li>Focused on making screening outputs actionable for both discretionary review and systematic testing.</li>
-      </ul>
-      <div class="tag-row">
-        <span class="tag">Tools</span>
-        <span class="tag">IBKR</span>
-        <span class="tag">Streamlit</span>
-        <span class="tag">Dashboard</span>
-      </div>
-      <div class="links">
-        <span class="status">Demo coming soon</span>
-        <span class="status">Repo coming soon</span>
+        <a href="https://github.com/RyanHou0303/buyside1" target="_blank" rel="noopener noreferrer">Repository</a>
       </div>
     </div>
 
   </div>
 
   <!-- Notes -->
-  <div class="card">
+  <div class="card" id="notes">
     <h2>Notes</h2>
+    <p class="section-intro">Intuition and working notes on financial time series, spectral analysis, and return distributions.</p>
 
     <div class="item">
       <div class="item-title">
-        Gamma Wall Intuition
-        <span class="tag">Vol</span>
+        Long- and Short-Term Memory in Financial Time Series
+        <span class="tag">Time Series</span>
       </div>
       <div class="item-desc">
-        Dealer positioning, gamma exposure, and how hedging flows create support/resistance
-        regimes in index options markets.
+        How autocorrelation decay distinguishes short and long memory, with intuition for market shocks, volatility clustering, and persistent dependence.
       </div>
       <div class="links">
-        <a href="#">Read</a>
+        <a href="notes/long-short-memory.html" aria-label="Read Long- and Short-Term Memory in Financial Time Series">Read note</a>
+        <a href="notes/files/long-short-memory.docx" download aria-label="Download Long- and Short-Term Memory in Financial Time Series as Word">Word (.docx)</a>
       </div>
     </div>
 
     <div class="item">
       <div class="item-title">
-        Fourier & Characteristic Function Intuition
-        <span class="tag">Derivatives</span>
+        Energy Spectrum and Autocorrelation
+        <span class="tag">Spectral Analysis</span>
       </div>
       <div class="item-desc">
-        Building intuition for transform-based pricing, convolution, and
-        risk-neutral expectations in option valuation.
+        The Wiener–Khinchin connection between time and frequency domains, with examples of hidden cycles, white noise, and microstructure noise filtering.
       </div>
       <div class="links">
-        <a href="#">Read</a>
+        <a href="notes/energy-spectrum-autocorrelation.html" aria-label="Read Energy Spectrum and Autocorrelation">Read note</a>
+        <a href="notes/files/energy-spectrum-autocorrelation.docx" download aria-label="Download Energy Spectrum and Autocorrelation as Word">Word (.docx)</a>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">
+        Skewness, Kurtosis, and Financial Returns
+        <span class="tag">Return Distributions</span>
+      </div>
+      <div class="item-desc">
+        An intuitive look at asymmetry, standardized moments, excess kurtosis, and why financial return tails can differ from a Gaussian model.
+      </div>
+      <div class="links">
+        <a href="notes/skewness-kurtosis.html" aria-label="Read Skewness, Kurtosis, and Financial Returns">Read note</a>
+        <a href="notes/files/skewness-kurtosis.docx" download aria-label="Download Skewness, Kurtosis, and Financial Returns as Word">Word (.docx)</a>
       </div>
     </div>
 
   </div>
 
   <p class="muted">
-    Last updated: <span id="t"></span>
+    Last updated: <time datetime="2026-10-23">October 23, 2026</time>
   </p>
-
-  <script>
-    document.getElementById("t").textContent =
-      new Date().toLocaleDateString();
-  </script>
 
 </body>
 </html>
